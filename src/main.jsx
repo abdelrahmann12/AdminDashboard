@@ -1,12 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Route, createBrowserRouter, createRoutesFromElements , RouterProvider } from "react-router";
+import { Route, createBrowserRouter, createRoutesFromElements , RouterProvider } from "react-router-dom";
 import App from "./App";
 import './index.css'
+import Dashboard from "./components/Dashboard/Dashboard";
+import Team from "./components/Team/Team";
+import Contacts from "./components/Contacts/Contacts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App/>} />
+    <Route path="/" element={<App/>} >
+      <Route index  element={<Dashboard></Dashboard>} />
+      <Route path="team"  element={<Team></Team>} />
+      <Route path="contacts"  element={<Contacts></Contacts>} />
+    </Route>
+    
+
   )
 )
 

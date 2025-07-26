@@ -7,8 +7,9 @@ import Typography from "@mui/material/Typography";
 import TopBar from "./components/topBar";
 import { styled } from "@mui/material/styles";
 import SideBar from "./components/SideBar";
-import { ThemeProvider, createTheme, useTheme } from "@mui/material/styles"; 
+import { ThemeProvider, createTheme,  } from "@mui/material/styles"; 
 import { getDesignTokens } from "./Theme";
+import { Outlet } from "react-router-dom";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -42,9 +43,11 @@ export default function MiniDrawer() {
 
         <SideBar open={open} handleDrawerClose={handleDrawerClose} />
 
+        
+
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
-          <Typography sx={{ marginBottom: 2 }}>Abdelrahman Emam</Typography>
+          <Outlet></Outlet>
         </Box>
       </Box>
     </ThemeProvider>

@@ -29,6 +29,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { Avatar, Typography } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router';
 
 
 
@@ -125,7 +126,9 @@ const Array3 = [
 ];
 
 export default function SideBar({open , handleDrawerClose}) {
+    let navigate = useNavigate();
     const theme = useTheme();
+    let location = useLocation()
   return (
    <Drawer variant="permanent" open={open}>
         <DrawerHeader>
@@ -141,7 +144,9 @@ export default function SideBar({open , handleDrawerClose}) {
 
         <Avatar sx={{mx: "auto" , width : open ? 85 : 44 , height :open ? 85 : 44 , mt:2}} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
         <Typography textAlign={'center'} sx={{ fontSize : open ? 17 : 0 , transition:"0.25s" }}>Abdelrahman</Typography>
-        <Typography textAlign={"center"} sx={{fontSize : open ? 15 : 0 , transition:"0.25s"}}>Admin</Typography>
+        <Typography
+         textAlign={"center"}
+         sx={{fontSize : open ? 15 : 0 , transition:"0.25s" , color:theme.palette.info.main}}>Admin</Typography>
 
         
         <Divider />
@@ -149,10 +154,15 @@ export default function SideBar({open , handleDrawerClose}) {
           {Array1.map((item) => (
             <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+              onClick={() => {
+                navigate(item.path)
+              }
+              }
                 sx={[
                   {
                     minHeight: 48,
                     px: 2.5,
+                    bgcolor: location.pathname === item.path ? "grey"  : ""  
                   },
                   open
                     ? {
@@ -161,6 +171,7 @@ export default function SideBar({open , handleDrawerClose}) {
                     : {
                         justifyContent: "center",
                       },
+
                 ]}
               >
                 <ListItemIcon
@@ -201,6 +212,9 @@ export default function SideBar({open , handleDrawerClose}) {
           {Array2.map((item) => (
             <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+               onClick={() => {
+                navigate(item.path)
+              }}
                 sx={[
                   {
                     minHeight: 48,
