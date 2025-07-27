@@ -1,31 +1,105 @@
-import { DataGrid } from '@mui/x-data-grid';
-import React from 'react'
-
-
-const rows = [
-  { id: 1, name: 'Data Grid', description: 'the Community version' },
-  { id: 2, name: 'Data Grid Pro', description: 'the Pro version' },
-  { id: 3, name: 'Data Grid Premium', description: 'the Premium version' },
-];
-
-const columns = [
-  { field: 'col1', headerName: "ID"   },
-  { field: 'col2', headerName: "Name"   },
-  { field: 'col3', headerName: "Email"   },
-  { field: 'col4', headerName: "Age"   },
-  { field: 'col5', headerName: "Phne"   },
-  { field: 'col6', headerName: "Access"   },
-  
-];
-
-
+import { DataGrid } from "@mui/x-data-grid";
+import React from "react";
+import { rows } from "./Data";
+import { Box, Typography } from "@mui/material";
+import { useTheme } from "@emotion/react";
+import {
+  AdminPanelSettingsOutlined,
+  LockOpenOutlined,
+  SecurityOutlined,
+} from "@mui/icons-material";
 
 export default function Team() {
+  const theme = useTheme();
+  const columns = [
+    {
+      field: "id",
+      headerName: "ID",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "name",
+      headerName: "name",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "email",
+      headerName: "email",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "age",
+      headerName: "age",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "phone",
+      headerName: "phone",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
+      field: "access",
+      headerName: "acess",
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+      renderCell: ({ row: { access } }) => {
+        return (
+          <Box
+            sx={{
+              padding: "5px",
+              width: "99px",
+              borderRadius: "3px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "space-evenly",
+
+              backgroundColor:
+                access === "Admin" ? theme.palette.primary.dark : access ==="Manager" ? theme.palette.secondary.dark : "#3da58a",
+            }}
+          >
+            {access === "Admin" && (
+              <AdminPanelSettingsOutlined
+                sx={{ color: "#fff" }}
+                fontSize="small"
+              />
+            )}
+
+            {access === "Manager" && (
+              <SecurityOutlined sx={{ color: "#fff" }} fontSize="small" />
+            )}
+
+            {access === "User" && (
+              <LockOpenOutlined sx={{ color: "#fff" }} fontSize="small" />
+            )}
+            
+            <Typography sx={{ fontSize: "13px" , 
+              color :"#fff"
+             }}>{access}</Typography>
+          </Box>
+        );
+      },
+    },
+  ];
   return (
     <div>
-       <div style={{ height: 600, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      <Box sx={{ height: 600, width: "98%" , mx: "auto" }}>
+        <DataGrid
+          rows={rows}
+          // @ts-ignore
+          columns={columns}
+        />
+      </Box>
     </div>
-    </div>
-  )
+  );
 }
