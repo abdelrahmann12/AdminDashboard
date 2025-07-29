@@ -6,6 +6,8 @@ import './index.css'
 import Dashboard from "./components/Dashboard/Dashboard";
 import Team from "./components/Team/Team";
 import Contacts from "./components/Contacts/Contacts";
+import Invoices from "./page/invoices/Invoices";
+import Form from "./page/form/Form";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,6 +15,8 @@ const router = createBrowserRouter(
       <Route index  element={<Dashboard></Dashboard>} />
       <Route path="team"  element={<Team></Team>} />
       <Route path="contacts"  element={<Contacts></Contacts>} />
+      <Route path="invoices"  element={<Invoices></Invoices>} />
+      <Route path="form"  element={<Form></Form>} />
     </Route>
     
 
