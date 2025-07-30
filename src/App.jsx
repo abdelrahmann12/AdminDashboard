@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import TopBar from "./components/topBar";
+import TopBar from "./components/TopBar";
 import { styled } from "@mui/material/styles";
 import SideBar from "./components/SideBar";
 import { ThemeProvider, createTheme,  } from "@mui/material/styles"; 
