@@ -1,4 +1,5 @@
 import { Alert, Box, Button, Snackbar, Stack, TextField } from "@mui/material";
+import Header from "../../components/Header/Header";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -58,6 +59,8 @@ export default function Form() {
       noValidate
       autoComplete="off"
     >
+       <Header title="CREATE USER" subTitle="Create a New User Profile" />
+  
       <Stack direction={"row"} sx={{ gap: 2 }}>
         <TextField
           {...register("firstName", { required: true, minLength: 3 })}

@@ -28,8 +28,9 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { Avatar, Typography } from '@mui/material';
+import { Avatar, Tooltip, Typography } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router';
+import eliotImg from   "../../assets/Elliot Alderson.jpg";
 
 
 
@@ -142,7 +143,7 @@ export default function SideBar({open , handleDrawerClose}) {
         </DrawerHeader>
         <Divider />
 
-        <Avatar sx={{mx: "auto" , width : open ? 85 : 44 , height :open ? 85 : 44 , mt:2}} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        <Avatar sx={{mx: "auto" , width : open ? 85 : 44 , height :open ? 85 : 44 , mt:2}} alt="Remy Sharp" src={eliotImg} />
         <Typography textAlign={'center'} sx={{ fontSize : open ? 17 : 0 , transition:"0.25s" }}>Abdelrahman</Typography>
         <Typography
          textAlign={"center"}
@@ -153,7 +154,10 @@ export default function SideBar({open , handleDrawerClose}) {
         <List>
           {Array1.map((item) => (
             <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+
+
+              <Tooltip title={ open ? "" :item.text} placement='left'>
+                <ListItemButton
               onClick={() => {
                 navigate(item.path)
               }
@@ -204,6 +208,11 @@ export default function SideBar({open , handleDrawerClose}) {
                   ]}
                 />
               </ListItemButton>
+              </Tooltip>
+              
+
+
+
             </ListItem>
           ))}
         </List>
@@ -211,7 +220,8 @@ export default function SideBar({open , handleDrawerClose}) {
         <List>
           {Array2.map((item) => (
             <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+              <Tooltip title={ open ? "" :item.text} placement='left'>
+               <ListItemButton
                onClick={() => {
                 navigate(item.path)
               }}
@@ -259,14 +269,18 @@ export default function SideBar({open , handleDrawerClose}) {
                   ]}
                 />
               </ListItemButton>
+              </Tooltip>
+             
             </ListItem>
           ))}
         </List>
         <Divider />
           <List>
           {Array3.map((item) => (
-            <ListItem key={item.path} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+            <ListItem key={item.path} disablePadding sx={{ display: "block" }}
+              onClick={() => navigate(item.path)}>
+              <Tooltip title={ open ? "" :item.text} placement='left'>
+               <ListItemButton
                 sx={[
                   {
                     minHeight: 48,
@@ -311,6 +325,8 @@ export default function SideBar({open , handleDrawerClose}) {
                   ]}
                 />
               </ListItemButton>
+              </Tooltip>
+             
             </ListItem>
           ))}
         </List>

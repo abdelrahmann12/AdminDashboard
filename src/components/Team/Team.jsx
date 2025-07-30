@@ -1,13 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid";
 import React from "react";
 import { rows } from "./Data";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@emotion/react";
+import { Box, Typography, useTheme } from "@mui/material";
 import {
   AdminPanelSettingsOutlined,
   LockOpenOutlined,
   SecurityOutlined,
 } from "@mui/icons-material";
+import Header from "../../components/Header/Header";
 
 export default function Team() {
   const theme = useTheme();
@@ -93,6 +93,7 @@ export default function Team() {
   ];
   return (
     <div>
+      <Header title={"Team"} subTitle={"welcome to your team"} ></Header>
       <Box sx={{ height: 600, width: "98%" , mx: "auto" }}>
         <DataGrid
           rows={rows}
